@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReMa — Mission &amp; Vision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --page: #E6ECE1;
+    --surface: #FFFFFF;
+    --ink: #16211A;
+    --ink-soft: #56624F;
+    --green: #43664A;
+    --green-deep: #2E4A34;
+    --green-line: #A9C0A3;
+    --tile: #EEF2E9;
+    --dark: #1D2620;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    font-family:var(--font-body);
+    background:var(--page);
+    color:var(--ink);
+    padding:28px;
+  }
+  .frame{
+    max-width:1180px;
+    margin:0 auto;
+    background:var(--surface);
+    border-radius:18px;
+    padding:36px 48px 56px;
+  }
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:60px;
+  }
+   .logo-img {
+  height: 150px;      
+  width: auto;       
+  display: block;    
+}
+
+.logo-container {
+  display: inline-block;
+  text-decoration: none;
+}
+
+  nav ul{ display:flex; list-style:none; gap:26px; }
+  nav a{
+    text-decoration:none;
+    color:var(--ink);
+    font-family:var(--font-ui);
+    font-size:15px;
+    font-weight:500;
+    position:relative;
+  }
+  nav a::after{
+    content:"";
+    position:absolute; left:0; bottom:-6px;
+    width:0; height:1.5px; background:var(--green);
+    transition:width .25s ease;
+  }
+  nav a:hover::after{ width:100%; }
+
+  /* Mobile nav toggle */
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+    color:var(--ink);
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+  }
+  .nav-toggle:hover{ background:var(--tile); }
+  .auth{ display:flex; align-items:center; gap:12px; }
+  .btn-login{
+    display:inline-block;
+    text-decoration:none;
+    background:none; border:none; font-family:var(--font-ui);
+    font-size:15px; font-weight:500; color:var(--ink);
+    cursor:pointer; padding:10px 6px;
+  }
+  .btn-signup{
+    display:inline-block;
+    text-decoration:none;
+    background:var(--green); color:#fff; border:none;
+    font-family:var(--font-ui); font-size:15px; font-weight:600;
+    padding:11px 24px; border-radius:24px; cursor:pointer;
+    transition:background .2s ease;
+  }
+  .btn-signup:hover{ background:var(--green-deep); }
+
+  section{ margin-bottom:64px; }
+
+  .page-hero{ max-width:620px; margin-bottom:56px; }
+  .eyebrow{
+    font-family:var(--font-ui);
+    font-size:13px; font-weight:600; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--green);
+    display:block; margin-bottom:14px;
+  }
+  h1{
+    font-family:var(--font-heading);
+    font-size:42px;
+    line-height:1.12;
+    font-weight:500;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+  }
+  h1 .accent{ color:var(--green); font-style:italic; }
+  .lead{
+    font-size:16px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+
+  .mv-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .mv-card{
+    border-radius:18px;
+    padding:40px 40px 36px;
+    position:relative;
+    overflow:hidden;
+  }
+  .mv-card.mission{ background:var(--tile); color:var(--ink); }
+  .mv-card.vision{ background:var(--dark); color:#fff; }
+  .mv-icon{
+    width:44px; height:44px;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:24px;
+  }
+  .mv-card.mission .mv-icon{ background:var(--green); color:#fff; }
+  .mv-card.vision .mv-icon{ background:rgba(255,255,255,0.12); color:#fff; }
+  .mv-card .eyebrow.on-dark{ color:#9FC2A6; }
+  .mv-card h2{
+    font-family:var(--font-heading);
+    font-size:24px;
+    font-weight:500;
+    margin-bottom:16px;
+    letter-spacing:-0.5px;
+  }
+  .mv-card p{
+    font-size:15.5px;
+    line-height:1.75;
+  }
+  .mv-card.mission p{ color:var(--ink-soft); }
+  .mv-card.vision p{ color:#C9D2C3; }
+
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:32px;
+  }
+  h2.section-title{
+    font-family:var(--font-heading);
+    font-size:28px;
+    font-weight:500;
+    letter-spacing:-0.5px;
+  }
+  .section-note{
+    font-size:14px;
+    color:var(--ink-soft);
+    max-width:320px;
+    text-align:right;
+  }
+
+  .values-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .value-card{
+    border:1px solid var(--green-line);
+    border-radius:14px;
+    padding:26px 22px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .value-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px rgba(46,74,52,0.1);
+  }
+  .value-num{
+    font-family:var(--font-heading);
+    font-size:13px;
+    color:var(--green);
+    font-weight:600;
+    display:block;
+    margin-bottom:14px;
+  }
+  .value-card h3{
+    font-size:15px;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .value-card p{
+    font-size:13px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+
+  .quote-band{
+    background:var(--tile);
+    border-radius:18px;
+    padding:48px 56px;
+    text-align:center;
+  }
+  .quote-band p{
+    font-family:var(--font-heading);
+    font-size:24px;
+    font-weight:500;
+    font-style:italic;
+    line-height:1.5;
+    color:var(--green-deep);
+    max-width:680px;
+    margin:0 auto 12px;
+  }
+  .quote-band span{
+    font-size:13px;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+
+  .stats-cta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--tile);
+    border-radius:18px;
+    padding:40px 48px;
+  }
+  .stats-cta p{
+    font-family:var(--font-heading);
+    font-size:22px;
+    font-weight:500;
+    max-width:420px;
+    line-height:1.35;
+  }
+  .stats-cta .btn-signup{ padding:13px 30px; font-size:15px; }
+
+  @media (max-width:900px){
+    .mv-grid{ grid-template-columns:1fr; }
+    .values-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:640px){
+    body{ padding:14px; }
+    .frame{ padding:24px; }
+    nav{ display:none; }
+    header{ flex-wrap:wrap; row-gap:14px; position:relative; }
+    .logo{ order:1; }
+    .nav-toggle{ display:flex; order:2; }
+    .auth{ order:3; }
+    #siteNav{ order:4; width:100%; }
+    #siteNav.open{ display:block; }
+    #siteNav ul{ flex-direction:column; gap:0; width:100%; }
+    #siteNav a{
+      display:block;
+      padding:13px 4px;
+      border-bottom:1px solid var(--green-line);
+    }
+    #siteNav a::after{ display:none; }
+    h1{ font-size:32px; }
+    .values-grid{ grid-template-columns:1fr; }
+    .section-head{ flex-direction:column; align-items:flex-start; gap:8px; }
+    .section-note{ text-align:left; }
+    .stats-cta{ flex-direction:column; gap:20px; text-align:center; }
+    .quote-band{ padding:36px 24px; }
+    .quote-band p{ font-size:19px; }
+  }
+
+  @media (max-width:480px){
+    .frame{ padding:16px; }
+    h1{ font-size:26px; }
+    .quote-band{ padding:28px 18px; }
+    .quote-band p{ font-size:16px; }
+  }
+
+  /* App download */
+  .app-cta{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:center;
+    gap:40px;
+    background:#1D2620;
+    color:#fff;
+    border-radius:20px;
+    padding:48px 56px;
+    margin-bottom:56px;
+    overflow:hidden;
+  }
+  .app-cta .eyebrow{ color:#9FC2A6; }
+  .app-cta h2{
+    font-family:var(--font-heading);
+    font-size:30px;
+    font-weight:500;
+    letter-spacing:-0.5px;
+    margin-bottom:14px;
+  }
+  .app-cta p{
+    font-size:14.5px;
+    color:#C9D2C3;
+    line-height:1.7;
+    max-width:420px;
+    margin-bottom:26px;
+  }
+  .app-buttons{ display:flex; gap:14px; flex-wrap:wrap; }
+  .store-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    color:var(--ink);
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:10px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .store-btn:hover{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,0.25); }
+  .store-btn .store-text{ display:flex; flex-direction:column; line-height:1.2; }
+  .store-btn .store-text small{ font-size:10px; color:var(--ink-soft); }
+  .store-btn .store-text b{ font-size:14px; font-weight:700; }
+  .app-visual{
+    position:relative;
+    height:220px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  /* 2. The phone itself */
+.app-phone {
+  /* Scale the phone down so it is guaranteed to fit inside the banner height */
+  width: 100%;          
+  height: 240px;        
+  
+  /* Path to your saved mockup image */
+  background-image: url('rema.png'); 
+  
+  /* Crucial settings to make sure the entire phone scales down and fits */
+  background-size: contain;         /* Forces the entire image to scale down to fit */
+  background-position: center;      /* Centers it vertically and horizontally */
+  background-repeat: no-repeat;     
+  
+  /* Reset positioning so flexbox can handle the centering */
+  position: relative;
+  right: auto;
+  bottom: auto;
+}
+
+
+  /* Footer */
+  .site-footer{
+    border-top:1px solid var(--green-line);
+    padding-top:44px;
+    margin-top:8px;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:32px;
+    margin-bottom:36px;
+  }
+  .footer-brand .logo{ margin-bottom:14px; }
+  .footer-brand p{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+    max-width:260px;
+    margin-bottom:20px;
+  }
+  .footer-socials{ display:flex; gap:10px; }
+  .footer-social{
+    width:34px; height:34px;
+    border-radius:50%;
+    border:1px solid var(--green-line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--green-deep);
+    transition:background .2s ease, color .2s ease;
+    text-decoration:none;
+  }
+  .footer-social:hover{ background:var(--green); color:#fff; }
+  .footer-col h4{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:16px;
+  }
+  .footer-col ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+  .footer-col a{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    text-decoration:none;
+    transition:color .2s ease;
+  }
+  .footer-col a:hover{ color:var(--green-deep); }
+  .footer-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-top:1px solid var(--green-line);
+    padding:22px 0 4px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .footer-legal{ display:flex; gap:20px; }
+  .footer-legal a{ color:var(--ink-soft); text-decoration:none; }
+  .footer-legal a:hover{ color:var(--green-deep); }
+
+  @media (max-width:900px){
+    .app-cta{ grid-template-columns:1fr; padding:36px; }
+    .app-visual{ display:none; }
+    .footer-top{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px){
+    .footer-top{ grid-template-columns:1fr; gap:28px; }
+    .footer-bottom{ flex-direction:column; gap:10px; align-items:flex-start; }
+  }
+
+</style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <a href="index.html" class="logo-container">
+    <img src="rema logo .jpg" alt="ReMa Logo" class="logo-img">
+  </a>
+      <nav id="siteNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="mission-vision.html" class="current">Mission &amp; Vision</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="auth">
+        <a href="login.html" class="btn-login">Login</a>
+        <a href="signup.html" class="btn-signup">Sign Up</a>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <span class="eyebrow">Mission &amp; Vision</span>
+      <h1>Why we're <span class="accent">building ReMa</span></h1>
+      <p class="lead">Everything on this platform, from the smallest listing to the largest deal, is built around one idea: renting shouldn't be hard to find, list, or trust.</p>
+    </section>
+
+    <section class="mv-grid">
+      <div class="mv-card mission">
+        <div class="mv-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <span class="eyebrow">Our mission</span>
+        <h2>A centralized home for every rental</h2>
+        <p>To provide a centralized, user-friendly platform where individuals and businesses can easily advertise, discover, and rent a wide variety of properties and items.</p>
+      </div>
+      <div class="mv-card vision">
+        <div class="mv-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <span class="eyebrow on-dark">Our vision</span>
+        <h2>West Africa's default way to rent</h2>
+        <p>To become the platform people and businesses across Ghana and West Africa turn to first whenever they need to rent something out, or rent something in — trusted, accessible, and built for how the region actually rents.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2 class="section-title">What guides us</h2>
+        <p class="section-note">The principles behind every feature we build and every listing we approve.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-num">01</span>
+          <h3>Trust first</h3>
+          <p>Verified listings, honest reviews, and clear pricing on every rental.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">02</span>
+          <h3>Accessibility</h3>
+          <p>One simple platform for everyone, from first-time renters to seasoned owners.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">03</span>
+          <h3>Community</h3>
+          <p>We grow by connecting neighbors, businesses, and local economies.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-num">04</span>
+          <h3>Reliability</h3>
+          <p>Bookings, payments, and support that work every single time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote-band">
+        <p>"If it can be rented, it belongs on ReMa — and it should take minutes, not days, to find it."</p>
+        <span>The ReMa Team</span>
+      </div>
+    </section>
+
+    <section style="margin-bottom:0;">
+      <div class="stats-cta">
+        <p>Be part of the platform redefining how West Africa rents.</p>
+        <a href="signup.html" class="btn-signup">Join ReMa</a>
+      </div>
+    </section>
+
+    <section class="app-cta">
+      <div>
+        <span class="eyebrow">Get the app</span>
+        <h2>Rent on the go, from your pocket</h2>
+        <p>List a space, book a car, or message an owner from anywhere. Download the ReMa app for iOS and Android.</p>
+        <div class="app-buttons">
+          <a href="#" class="store-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#16211A"><path d="M16.365 1.43c0 1.14-.462 2.104-1.386 2.898-.924.79-2.019 1.223-3.09 1.13-.115-1.09.42-2.24 1.317-3.02.897-.79 2.28-1.32 3.16-1.008zM20.9 17.2c-.66 1.44-1.34 2.75-2.36 4.02-.99 1.23-1.8 2.24-3.19 2.24-1.39 0-1.72-.85-3.28-.85-1.55 0-1.94.83-3.28.87-1.34.04-2.37-1.34-3.36-2.55-2.03-2.47-3.6-6.98-1.5-10.03 1.02-1.5 2.86-2.46 4.85-2.49 1.28-.02 2.5.86 3.28.86.79 0 2.26-1.06 3.82-.9.65.03 2.48.26 3.65 1.98-.09.06-2.18 1.27-2.15 3.79.03 3.02 2.65 4.02 2.68 4.03-.02.08-.42 1.44-.16 2.07z"/></svg>
+            <span class="store-text"><small>Download on the</small><b>App Store</b></span>
+          </a>
+          <a href="#" class="store-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path fill="#00C2FF" d="M3.6 2.6a1 1 0 0 0-.6.9v17a1 1 0 0 0 .6.9l9.6-9.4z"/><path fill="#00E266" d="m13.2 12 3.4-3.3 3.9 2.2c.9.5.9 1.7 0 2.2l-3.9 2.2z"/><path fill="#FF3A44" d="M3.6 3.5 16.6 8.7l-3.4 3.3z"/><path fill="#FFCF00" d="M3.6 20.5 16.6 15.3l-3.4-3.3z"/></svg>
+            <span class="store-text"><small>Get it on</small><b>Google Play</b></span>
+          </a>
+        </div>
+      </div>
+      <div class="app-visual">
+        <div class="app-phone"></div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">ReMa</div>
+          <p>One centralized platform to advertise, discover, and rent almost anything, anywhere in Ghana.</p>
+          <div class="footer-socials">
+            <a class="footer-social" href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
+            <a class="footer-social" href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c2.7 0 3 0 4.1.06 1 .05 1.6.2 2 .35a3.9 3.9 0 0 1 1.4.9 3.9 3.9 0 0 1 .9 1.4c.15.4.3 1 .35 2 .05 1.1.06 1.4.06 4.1s0 3-.06 4.1c-.05 1-.2 1.6-.35 2a3.9 3.9 0 0 1-.9 1.4 3.9 3.9 0 0 1-1.4.9c-.4.15-1 .3-2 .35-1.1.05-1.4.06-4.1.06s-3 0-4.1-.06c-1-.05-1.6-.2-2-.35a3.9 3.9 0 0 1-1.4-.9 3.9 3.9 0 0 1-.9-1.4c-.15-.4-.3-1-.35-2C2.2 15 2.2 14.7 2.2 12s0-3 .06-4.1c.05-1 .2-1.6.35-2a3.9 3.9 0 0 1 .9-1.4 3.9 3.9 0 0 1 1.4-.9c.4-.15 1-.3 2-.35C8 2.2 8.3 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.4a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0z"/></svg></a>
+            <a class="footer-social" href="#" aria-label="Twitter / X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 4.6a8.4 8.4 0 0 1-2.4.7 4.2 4.2 0 0 0 1.8-2.3 8.4 8.4 0 0 1-2.6 1 4.1 4.1 0 0 0-7 3.8 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.3 5.5 4.1 4.1 0 0 1-1.9-.5v.05a4.1 4.1 0 0 0 3.3 4 4.2 4.2 0 0 1-1.9.07 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.4a11.7 11.7 0 0 0 6.3 1.8c7.5 0 11.7-6.3 11.7-11.7v-.5A8.4 8.4 0 0 0 23 4.6z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="mission-vision.html">Mission &amp; Vision</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="services.html">Residential</a></li>
+            <li><a href="services.html">Vehicles</a></li>
+            <li><a href="services.html">Event Venues</a></li>
+            <li><a href="services.html">Tools &amp; Equipment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 ReMa. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function(){
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('siteNav');
+      if(toggle && nav){
+        toggle.addEventListener('click', function(){
+          var isOpen = nav.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
